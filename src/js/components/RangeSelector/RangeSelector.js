@@ -11,6 +11,7 @@ import styled, { ThemeContext } from '../../styled-provider';
 import { Box } from '../Box';
 import { EdgeControl } from './EdgeControl';
 import { parseMetricToNum } from '../../utils';
+import { defaultProps } from '../../default-props';
 
 const Container = styled(Box)`
   user-select: none;
