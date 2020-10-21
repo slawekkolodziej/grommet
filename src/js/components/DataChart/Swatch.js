@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 import { normalizeColor, parseMetricToNum } from '../../utils';
 
 const Swatch = ({ aspect, color, point, thickness }) => {

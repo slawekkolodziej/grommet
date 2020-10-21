@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext } from 'react';
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 import { Box } from '../Box';
 import { round } from '../Chart';
 import { doublePad } from './utils';

@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext, useMemo, useState } from 'react';
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 import { defaultProps } from '../../default-props';
 
 import { normalizeColor, parseMetricToNum } from '../../utils';
@@ -49,7 +49,7 @@ const AccordionPanel = forwardRef(
     // accordion.hover.color will be deprecated in v3.
     if (JSON.stringify(theme.accordion.hover.color) !== defaultHoverColor)
       console.warn(
-        `The theme style for accordion.hover.color is deprecated, 
+        `The theme style for accordion.hover.color is deprecated,
         use accordion.hover.heading.color instead.`,
       );
 

@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext } from 'react';
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 
 import { defaultProps } from '../../default-props';
 import { arcCommands, parseMetricToNum, translateEndAngle } from '../../utils';

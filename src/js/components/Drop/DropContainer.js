@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 
 import { FocusedContainer } from '../FocusedContainer';
 import {

@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react';
 
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 import { FormContext } from '../Form/FormContext';
 import { defaultProps } from '../../default-props';
 import { Keyboard } from '../Keyboard';

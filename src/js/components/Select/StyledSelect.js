@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '../../styled-provider';
 
 import { sizeStyle } from '../../utils';
 

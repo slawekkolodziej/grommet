@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from '../../styled-provider';
 
 import { baseStyle } from '../../utils';
 import { backgroundStyle } from '../../utils/background';

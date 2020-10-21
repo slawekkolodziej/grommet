@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from '../styled-provider';
 
 export const parseMetricToNum = metric => {
   if (typeof metric === 'number') return metric;

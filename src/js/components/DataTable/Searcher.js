@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import { ThemeContext } from 'styled-components';
-
 import { FormSearch } from 'grommet-icons/icons/FormSearch';
+import { ThemeContext } from '../../styled-provider';
 
 import { defaultProps } from '../../default-props';
 

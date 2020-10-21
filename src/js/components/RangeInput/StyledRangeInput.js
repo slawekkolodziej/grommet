@@ -1,5 +1,5 @@
 import { rgba } from 'polished';
-import styled, { css } from 'styled-components';
+import styled, { css } from '../../styled-provider';
 
 import { focusStyle, normalizeColor, parseMetricToNum } from '../../utils';
 import { defaultProps } from '../../default-props';

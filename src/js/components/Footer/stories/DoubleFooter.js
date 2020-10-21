@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import styled from 'styled-components';
 
 import { Grommet as GrommetIcon } from 'grommet-icons';
 import { Anchor, Box, Footer, grommet, Grommet, Main, Text } from 'grommet';
+import styled from '../../../styled-provider';
 import { fiveColumns as data } from './data';
 
 const StyledAnchor = styled(Anchor)`

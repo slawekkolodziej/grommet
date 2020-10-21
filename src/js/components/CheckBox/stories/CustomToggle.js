@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { css } from 'styled-components';
 
 import { Box, Grommet, CheckBox } from 'grommet';
 import { grommet } from 'grommet/themes';
 import { deepMerge } from 'grommet/utils';
+import { css } from '../../../styled-provider';
 
 const checkboxCheckStyle = css`
   background-color: #2196f3;

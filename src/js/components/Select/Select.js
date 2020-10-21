@@ -8,7 +8,7 @@ import React, {
   useRef,
   useEffect,
 } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import styled, { ThemeContext } from '../../styled-provider';
 
 import { controlBorderStyle, normalizeColor } from '../../utils';
 import { defaultProps } from '../../default-props';

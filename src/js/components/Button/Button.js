@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react';
 
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 import {
   backgroundAndTextColors,
   colorIsDark,

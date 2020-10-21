@@ -7,7 +7,7 @@ import React, {
   useState,
   useEffect,
 } from 'react';
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 import { defaultProps } from '../../default-props';
 
 import { Box } from '../Box';
@@ -475,7 +475,7 @@ const Calendar = forwardRef(
           </StyledDayContainer>,
         );
       } else if (
-        /* Do not show adjacent days in 6th row if all days 
+        /* Do not show adjacent days in 6th row if all days
         fall in the next month */
         showAdjacentDays === 'trim' &&
         otherMonth &&

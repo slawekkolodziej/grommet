@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import styled from 'styled-components';
+import styled from '../styled-provider';
 
 import 'jest-styled-components';
 

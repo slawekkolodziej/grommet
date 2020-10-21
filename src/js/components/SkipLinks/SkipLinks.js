@@ -1,5 +1,5 @@
 import React, { cloneElement, useContext, useRef, useState } from 'react';
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 
 import { Box } from '../Box';
 import { Text } from '../Text';

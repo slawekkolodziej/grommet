@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useState, useContext } from 'react';
 import { createPortal } from 'react-dom';
 
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 import { defaultProps } from '../../default-props';
 import { getNewContainer, setFocusWithoutScroll } from '../../utils';
 import { DropContainer } from './DropContainer';

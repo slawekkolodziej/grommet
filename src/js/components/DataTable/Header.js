@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import styled, { css, ThemeContext } from 'styled-components';
+import styled, { css, ThemeContext } from '../../styled-provider';
 
 import { defaultProps } from '../../default-props';
 

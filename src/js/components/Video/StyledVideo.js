@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from '../../styled-provider';
 
 import { genericStyles, normalizeColor } from '../../utils';
 import { defaultProps } from '../../default-props';

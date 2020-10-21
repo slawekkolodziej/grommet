@@ -1,5 +1,5 @@
-import { css } from 'styled-components';
 import React, { useState } from 'react';
+import { css } from '../../../../styled-provider';
 
 import { Box } from '../../..';
 

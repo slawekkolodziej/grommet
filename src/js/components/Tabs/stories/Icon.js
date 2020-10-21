@@ -1,10 +1,10 @@
 import React from 'react';
-import { css } from 'styled-components';
 import { storiesOf } from '@storybook/react';
 import { Attraction, Car, TreeOption } from 'grommet-icons';
 import { Box, Grommet, Tab, Tabs } from 'grommet';
 import { grommet } from 'grommet/themes';
 import { deepMerge } from 'grommet/utils';
+import { css } from '../../../styled-provider';
 
 const customTheme = deepMerge(grommet, {
   tab: {

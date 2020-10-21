@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext, useState } from 'react';
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 
 import { Box } from '../Box';
 import { defaultProps } from '../../default-props';

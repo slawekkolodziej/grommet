@@ -1,16 +1,16 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import styled, { keyframes } from 'styled-components';
 
 import { Box, DataChart, Grommet, Stack } from 'grommet';
 import { grommet } from 'grommet/themes';
+import styled, { keyframes } from '../../../styled-provider';
 
 export const keyFrameExampleOne = keyframes`
 0% {
   width: 200px;
   background-color: #FFFFFF;
-}  
+}
 100% {
     width: 0px;
     background-color: #FFFFFF;

@@ -5,8 +5,8 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { ThemeContext } from 'styled-components';
 import { Calendar as CalendarIcon } from 'grommet-icons/icons/Calendar';
+import { ThemeContext } from '../../styled-provider';
 import { defaultProps } from '../../default-props';
 import { Box } from '../Box';
 import { Calendar } from '../Calendar';

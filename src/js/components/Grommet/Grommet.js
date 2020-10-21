@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from '../../styled-provider';
 
 import {
   ResponsiveContext,

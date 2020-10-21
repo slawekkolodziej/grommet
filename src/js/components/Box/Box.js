@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 import { defaultProps } from '../../default-props';
 import { backgroundIsDark } from '../../utils';
 import { Keyboard } from '../Keyboard';

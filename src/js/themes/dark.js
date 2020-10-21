@@ -1,5 +1,5 @@
 import { rgba } from 'polished';
-import { css } from 'styled-components';
+import { css } from '../styled-provider';
 
 import { deepFreeze } from '../utils/object';
 import { normalizeColor } from '../utils/colors';

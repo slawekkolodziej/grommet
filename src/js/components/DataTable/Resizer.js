@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import styled, { ThemeContext } from '../../styled-provider';
 
 import { defaultProps } from '../../default-props';
 import { Box } from '../Box';

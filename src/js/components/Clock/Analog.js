@@ -1,5 +1,5 @@
 import React, { forwardRef, useContext, useMemo } from 'react';
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 
 import { parseMetricToNum } from '../../utils';
 import { defaultProps } from '../../default-props';

@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import styled, { ThemeContext } from '../../styled-provider';
 
 import { Box } from '../Box';
 import { EdgeControl } from './EdgeControl';

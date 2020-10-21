@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { ThemeContext } from 'styled-components';
+import { ThemeContext } from '../../styled-provider';
 
 import { defaultProps } from '../../default-props';
 import { normalizeColor, parseMetricToNum, useForwardedRef } from '../../utils';

@@ -1,5 +1,4 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
 import 'jest-styled-components';
 import renderer from 'react-test-renderer';
 import 'jest-axe/extend-expect';
@@ -8,6 +7,7 @@ import 'regenerator-runtime/runtime';
 import { axe } from 'jest-axe';
 import { render, fireEvent } from '@testing-library/react';
 
+import styled, { css } from '../../../styled-provider';
 import { Grommet, Tab, Tabs } from '../..';
 
 describe('Tabs', () => {

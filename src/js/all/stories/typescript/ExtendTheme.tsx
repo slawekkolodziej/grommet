@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from 'styled-components';
+import { css } from '../../../styled-provider';
 import { storiesOf } from '@storybook/react';
 import { ThemeType, BoxTypes, Grommet, Box, Anchor, Button } from 'grommet';
 

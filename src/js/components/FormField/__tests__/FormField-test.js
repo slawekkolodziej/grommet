@@ -1,6 +1,5 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import styled from 'styled-components';
 import 'jest-styled-components';
 import 'jest-axe/extend-expect';
 import 'regenerator-runtime/runtime';
@@ -8,6 +7,7 @@ import 'regenerator-runtime/runtime';
 import { axe } from 'jest-axe';
 import { cleanup, render } from '@testing-library/react';
 import { Alert, StatusInfo } from 'grommet-icons';
+import styled from '../../../styled-provider';
 import { Grommet } from '../../Grommet';
 import { Form } from '../../Form';
 import { FormField } from '..';
