@@ -42,7 +42,8 @@
     "storybook-emotion": "cross-env NODE_ENV=development GROMMET_DRIVER=emotion start-storybook -p 9002 -c storybook -s ./storybook/public",
     "build-storybook": "build-storybook -c storybook -o storybook-static -s ./storybook/public",
     "prettier": "pretty-quick --staged",
-    "chromatic": "chromatic -t 9q99in2ygnh"
+    "chromatic": "chromatic -t 9q99in2ygnh",
+    "postinstall": "cd node_modules/babel-plugin-styled-components && npm run build"
   },
   "peerDependencies": {
     "react": ">= 16.6.1",
@@ -92,7 +93,7 @@
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.0-beta.6",
     "babel-plugin-emotion": "^10.0.33",
-    "babel-plugin-styled-components": "^1.6.4",
+    "babel-plugin-styled-components": "https://github.com/styled-components/babel-plugin-styled-components.git#96f11eb28422526ec227dc2ba6f857d3df7c3d3a",
     "babel-plugin-transform-imports": "^2.0.0",
     "bundlesize": "^0.18.0",
     "chromatic": "^5.0.0",
