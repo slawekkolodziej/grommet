@@ -1,6 +1,6 @@
 const driverPlugin =
   process.env.GROMMET_DRIVER === 'emotion'
-    ? ['babel-plugin-emotion']
+    ? ['emotion']
     : ['styled-components', { useDisplayName: false }];
 
 module.exports = {
