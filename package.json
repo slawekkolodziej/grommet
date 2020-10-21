@@ -39,6 +39,7 @@
     "test-bundlesize": "bundlesize",
     "pack": "babel-node ./tools/pack",
     "storybook": "cross-env NODE_ENV=development start-storybook -p 9001 -c storybook -s ./storybook/public",
+    "storybook-emotion": "cross-env NODE_ENV=development GROMMET_DRIVER=emotion start-storybook -p 9002 -c storybook -s ./storybook/public",
     "build-storybook": "build-storybook -c storybook -o storybook-static -s ./storybook/public",
     "prettier": "pretty-quick --staged",
     "chromatic": "chromatic -t 9q99in2ygnh"
@@ -46,7 +47,9 @@
   "peerDependencies": {
     "react": ">= 16.6.1",
     "react-dom": ">= 16.6.1",
-    "styled-components": ">= 5.1"
+    "styled-components": ">= 5.1",
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27"
   },
   "dependencies": {
     "grommet-icons": "^4.2.0",
@@ -69,7 +72,8 @@
     "@babel/plugin-proposal-pipeline-operator": "^7.3.2",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
-    "@emotion/core": "^10.0.7",
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
     "@storybook/addon-storysource": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/react": "^5.3.19",
@@ -87,6 +91,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.0-beta.6",
+    "babel-plugin-emotion": "^10.0.33",
     "babel-plugin-styled-components": "^1.6.4",
     "babel-plugin-transform-imports": "^2.0.0",
     "bundlesize": "^0.18.0",
