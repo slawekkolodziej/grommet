@@ -191,22 +191,20 @@ export const backgroundStyle = (backgroundArg, theme, textColorArg) => {
   return undefined;
 };
 
-export const activeStyle = css`
-  ${props =>
-    backgroundStyle(
-      normalizeColor(props.theme.global.active.background, props.theme),
-      props.theme,
-      props.theme.global.active.color,
-    )}
+export const activeStyle = props => css`
+  ${backgroundStyle(
+    normalizeColor(props.theme.global.active.background, props.theme),
+    props.theme,
+    props.theme.global.active.color,
+  )}
 `;
 
-export const selectedStyle = css`
-  ${props =>
-    backgroundStyle(
-      normalizeColor(props.theme.global.selected.background, props.theme),
-      props.theme,
-      props.theme.global.selected.color,
-    )}
+export const selectedStyle = props => css`
+  ${backgroundStyle(
+    normalizeColor(props.theme.global.selected.background, props.theme),
+    props.theme,
+    props.theme.global.selected.color,
+  )}
 `;
 
 export const getHoverIndicatorStyle = (hoverIndicator, theme) => {

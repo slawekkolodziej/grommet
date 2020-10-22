@@ -28,8 +28,8 @@ export const grommet = deepFreeze({
     },
   },
   button: {
-    extend: css`
-      ${props => !props.plain && 'font-weight: bold;'}
+    extend: props => css`
+      ${!props.plain && 'font-weight: bold;'}
     `,
   },
 });

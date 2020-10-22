@@ -57,8 +57,8 @@ export const dark = deepFreeze({
     },
     focus: {
       border: {
-        color: css`
-          ${props => normalizeColor('focus', props.theme)};
+        color: props => css`
+          ${normalizeColor('focus', props.theme)};
         `,
         width: '2px',
       },

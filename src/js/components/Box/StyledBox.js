@@ -24,8 +24,8 @@ const ALIGN_MAP = {
   stretch: 'stretch',
 };
 
-const alignStyle = css`
-  align-items: ${props => ALIGN_MAP[props.align]};
+const alignStyle = props => css`
+  align-items: ${ALIGN_MAP[props.align]};
 `;
 
 const ALIGN_CONTENT_MAP = {
@@ -37,8 +37,8 @@ const ALIGN_CONTENT_MAP = {
   stretch: 'stretch',
 };
 
-const alignContentStyle = css`
-  align-content: ${props => ALIGN_CONTENT_MAP[props.alignContent]};
+const alignContentStyle = props => css`
+  align-content: ${ALIGN_CONTENT_MAP[props.alignContent]};
 `;
 
 const BASIS_MAP = {
@@ -52,9 +52,8 @@ const BASIS_MAP = {
   '2/3': '66.66%',
 };
 
-const basisStyle = css`
-  flex-basis: ${props =>
-    BASIS_MAP[props.basis] ||
+const basisStyle = props => css`
+  flex-basis: ${BASIS_MAP[props.basis] ||
     props.theme.global.size[props.basis] ||
     props.basis};
 `;
@@ -90,11 +89,10 @@ const directionStyle = (direction, theme) => {
   return styles;
 };
 
-const elevationStyle = css`
-  box-shadow: ${props =>
-    props.theme.global.elevation[props.theme.dark ? 'dark' : 'light'][
-      props.elevationProp
-    ]};
+const elevationStyle = props => css`
+  box-shadow: ${props.theme.global.elevation[
+    props.theme.dark ? 'dark' : 'light'
+  ][props.elevationProp]};
 `;
 
 const FLEX_MAP = {
@@ -112,11 +110,10 @@ const flexGrowShrinkProp = flex => {
   return `${flex.grow ? flex.grow : 0} ${flex.shrink ? flex.shrink : 0}`;
 };
 
-const flexStyle = css`
-  flex: ${props =>
-    `${flexGrowShrinkProp(props.flex)}${
-      props.flex !== true && !props.basis ? ' auto' : ''
-    }`};
+const flexStyle = props => css`
+  flex: ${`${flexGrowShrinkProp(props.flex)}${
+    props.flex !== true && !props.basis ? ' auto' : ''
+  }`};
 `;
 
 const JUSTIFY_MAP = {
@@ -128,8 +125,8 @@ const JUSTIFY_MAP = {
   start: 'flex-start',
 };
 
-const justifyStyle = css`
-  justify-content: ${props => JUSTIFY_MAP[props.justify]};
+const justifyStyle = props => css`
+  justify-content: ${JUSTIFY_MAP[props.justify]};
 `;
 
 const WRAP_MAP = {
@@ -137,8 +134,8 @@ const WRAP_MAP = {
   reverse: 'wrap-reverse',
 };
 
-const wrapStyle = css`
-  flex-wrap: ${props => WRAP_MAP[props.wrapProp]};
+const wrapStyle = props => css`
+  flex-wrap: ${WRAP_MAP[props.wrapProp]};
 `;
 
 const ROUND_MAP = {
@@ -455,116 +452,109 @@ const animationInitialStyle = item => {
   return '';
 };
 
-const animationStyle = css`
-  ${props => css`
-    ${animationInitialStyle(props.animation)}
-    animation: ${animationItemStyle(props.animation, props.theme)};
-  `};
+const animationStyle = props => css`
+  ${animationInitialStyle(props.animation)}
+  animation: ${animationItemStyle(props.animation, props.theme)};
 `;
 
-const interactiveStyle = css`
+const interactiveStyle = props => css`
   cursor: pointer;
 
   &:hover {
-    ${props =>
-      props.hoverIndicator &&
+    ${props.hoverIndicator &&
       getHoverIndicatorStyle(props.hoverIndicator, props.theme)}
   }
 `;
 
 const getSize = (props, size) => props.theme.global.size[size] || size;
 
-const heightObjectStyle = css`
-  ${props =>
-    props.heightProp.max &&
+const heightObjectStyle = props => css`
+  ${props.heightProp.max &&
     css`
       max-height: ${getSize(props, props.heightProp.max)};
     `};
-  ${props =>
-    props.heightProp.min &&
+  ${props.heightProp.min &&
     css`
       min-height: ${getSize(props, props.heightProp.min)};
     `};
 `;
 
-const heightStyle = css`
-  height: ${props => getSize(props, props.heightProp)};
+const heightStyle = props => css`
+  height: ${getSize(props, props.heightProp)};
 `;
 
-const widthObjectStyle = css`
-  ${props =>
-    props.widthProp.max &&
+const widthObjectStyle = props => css`
+  ${props.widthProp.max &&
     css`
       max-width: ${getSize(props, props.widthProp.max)};
     `};
-  ${props =>
-    props.widthProp.min &&
+  ${props.widthProp.min &&
     css`
       min-width: ${getSize(props, props.widthProp.min)};
     `};
-  ${props =>
-    props.widthProp.width &&
+  ${props.widthProp.width &&
     css`
       width: ${getSize(props, props.widthProp.width)};
     `};
 `;
 
-const widthStyle = css`
-  width: ${props => getSize(props, props.widthProp)};
+const widthStyle = props => css`
+  width: ${getSize(props, props.widthProp)};
 `;
 
 // NOTE: basis must be after flex! Otherwise, flex overrides basis
-const StyledBox = styled.div`
-  display: flex;
-  box-sizing: border-box;
-  ${props => !props.basis && 'max-width: 100%;'};
+const StyledBox = styled.div(
+  props => css`
+    display: flex;
+    box-sizing: border-box;
+    ${!props.basis && 'max-width: 100%;'};
 
-  ${genericStyles}
-  ${props => props.align && alignStyle}
-  ${props => props.alignContent && alignContentStyle}
-  ${props => props.background && backgroundStyle(props.background, props.theme)}
-  ${props =>
-    props.border &&
-    (Array.isArray(props.border)
-      ? props.border.map(border =>
-          borderStyle(border, props.responsive, props.theme),
-        )
-      : borderStyle(props.border, props.responsive, props.theme))}
-  ${props =>
-    props.directionProp && directionStyle(props.directionProp, props.theme)}
-  ${props =>
-    props.heightProp &&
-    (typeof props.heightProp === 'object' ? heightObjectStyle : heightStyle)}
-  ${props =>
-    props.widthProp &&
-    (typeof props.widthProp === 'object' ? widthObjectStyle : widthStyle)}
-  ${props => props.flex !== undefined && flexStyle}
-  ${props => props.basis && basisStyle}
-  ${props => props.fillProp && fillStyle(props.fillProp)}
-  ${props => props.justify && justifyStyle}
-  ${props =>
-    props.pad &&
-    edgeStyle(
-      'padding',
-      props.pad,
-      props.responsive,
-      props.theme.box.responsiveBreakpoint,
-      props.theme,
-    )}
-  ${props =>
-    props.round && roundStyle(props.round, props.responsive, props.theme)}
-  ${props => props.wrapProp && wrapStyle}
-  ${props => props.overflowProp && overflowStyle(props.overflowProp)}
-  ${props => props.elevationProp && elevationStyle}
-  ${props => props.animation && animationStyle}
-  ${props => props.onClick && interactiveStyle}
-  ${props =>
-    props.onClick &&
-    props.focus &&
-    props.focusIndicator !== false &&
-    focusStyle()}
-  ${props => props.theme.box && props.theme.box.extend}
-`;
+    ${genericStyles(props)}
+    ${props.align && alignStyle(props)}
+    ${props.alignContent && alignContentStyle(props)}
+    ${props.background && backgroundStyle(props.background, props.theme)}
+    ${props.border &&
+      (Array.isArray(props.border)
+        ? props.border.map(border =>
+            borderStyle(border, props.responsive, props.theme),
+          )
+        : borderStyle(props.border, props.responsive, props.theme))}
+    ${props.directionProp && directionStyle(props.directionProp, props.theme)}
+    ${props.heightProp &&
+      (typeof props.heightProp === 'object'
+        ? heightObjectStyle(props)
+        : heightStyle(props))}
+    ${props.widthProp &&
+      (typeof props.widthProp === 'object'
+        ? widthObjectStyle(props)
+        : widthStyle(props))}
+    ${props.flex !== undefined && flexStyle(props)}
+    ${props.basis && basisStyle(props)}
+    ${props.fillProp && fillStyle(props.fillProp)}
+    ${props.justify && justifyStyle(props)}
+    ${props.pad &&
+      edgeStyle(
+        'padding',
+        props.pad,
+        props.responsive,
+        props.theme.box.responsiveBreakpoint,
+        props.theme,
+      )}
+    ${props.round && roundStyle(props.round, props.responsive, props.theme)}
+    ${props.wrapProp && wrapStyle(props)}
+    ${props.overflowProp && overflowStyle(props.overflowProp)}
+    ${props.elevationProp && elevationStyle(props)}
+    ${props.animation && animationStyle(props)}
+    ${props.onClick && interactiveStyle(props)}
+    ${props.onClick &&
+      props.focus &&
+      props.focusIndicator !== false &&
+      focusStyle()}
+    ${props.theme.box &&
+      props.theme.box.extend &&
+      props.theme.box.extend(props)}
+  `,
+);
 
 const gapStyle = (directionProp, gap, responsive, border, theme) => {
   const metric = theme.global.edgeSize[gap] || gap;
@@ -695,19 +685,20 @@ const gapStyle = (directionProp, gap, responsive, border, theme) => {
 StyledBox.defaultProps = {};
 Object.setPrototypeOf(StyledBox.defaultProps, defaultProps);
 
-const StyledBoxGap = styled.div`
-  flex: 0 0 auto;
-  align-self: stretch;
-  ${props =>
-    props.gap &&
-    gapStyle(
-      props.directionProp,
-      props.gap,
-      props.responsive,
-      props.border,
-      props.theme,
-    )};
-`;
+const StyledBoxGap = styled.div(
+  props => css`
+    flex: 0 0 auto;
+    align-self: stretch;
+    ${props.gap &&
+      gapStyle(
+        props.directionProp,
+        props.gap,
+        props.responsive,
+        props.border,
+        props.theme,
+      )};
+  `,
+);
 
 StyledBoxGap.defaultProps = {};
 Object.setPrototypeOf(StyledBoxGap.defaultProps, defaultProps);

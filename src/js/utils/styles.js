@@ -3,13 +3,12 @@ import { backgroundStyle } from './background';
 import { normalizeColor } from './colors';
 import { breakpointStyle, parseMetricToNum } from './mixins';
 
-export const baseStyle = css`
-  font-family: ${props => props.theme.global.font.family};
-  font-size: ${props => props.theme.global.font.size};
-  line-height: ${props => props.theme.global.font.height};
-  font-weight: ${props => props.theme.global.font.weight};
-  ${props =>
-    !props.plain && backgroundStyle(props.theme.baseBackground, props.theme)}
+export const baseStyle = props => css`
+  font-family: ${props.theme.global.font.family};
+  font-size: ${props.theme.global.font.size};
+  line-height: ${props.theme.global.font.height};
+  font-weight: ${props.theme.global.font.weight};
+  ${!props.plain && backgroundStyle(props.theme.baseBackground, props.theme)}
   box-sizing: border-box;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -17,14 +16,13 @@ export const baseStyle = css`
   -webkit-font-smoothing: antialiased;
 `;
 
-export const controlBorderStyle = css`
-  border: ${props => props.theme.global.control.border.width} solid
-    ${props =>
-      normalizeColor(
-        props.theme.global.control.border.color || 'border',
-        props.theme,
-      )};
-  border-radius: ${props => props.theme.global.control.border.radius};
+export const controlBorderStyle = props => css`
+  border: ${props.theme.global.control.border.width} solid
+    ${normalizeColor(
+      props.theme.global.control.border.color || 'border',
+      props.theme,
+    )};
+  border-radius: ${props.theme.global.control.border.radius};
 `;
 
 export const edgeStyle = (
@@ -305,9 +303,8 @@ export const focusStyle = ({
   forceOutline,
   justBorder,
   skipSvgChildren,
-} = {}) => css`
-  ${props =>
-    !skipSvgChildren &&
+} = {}) => props => css`
+  ${!skipSvgChildren &&
     `
   > circle,
   > ellipse,
@@ -318,7 +315,7 @@ export const focusStyle = ({
   > rect {
     ${focusStyles(props)}
   }`}
-  ${props => focusStyles(props, { forceOutline, justBorder })}
+  ${focusStyles(props, { forceOutline, justBorder })}
   ${!forceOutline &&
     `
   ::-moz-focus-inner {
@@ -336,9 +333,8 @@ export const unfocusStyle = ({
   forceOutline,
   justBorder,
   skipSvgChildren,
-} = {}) => css`
-  ${props =>
-    !skipSvgChildren &&
+} = {}) => props => css`
+  ${!skipSvgChildren &&
     `
   > circle,
   > ellipse,
@@ -349,7 +345,7 @@ export const unfocusStyle = ({
   > rect {
     ${unfocusStyles(props)}
   }`}
-  ${props => unfocusStyles(props, { forceOutline, justBorder })}
+  ${unfocusStyles(props, { forceOutline, justBorder })}
   ${!forceOutline &&
     `
   ::-moz-focus-inner {
@@ -370,8 +366,7 @@ const adjustPad = (props, value) =>
 
 export const getInputPadBySide = (props, side) => {
   if (typeof props.theme.global.input.padding !== 'object') {
-    const adjustedPad = adjustPad(props, props.theme.global.input.padding);
-    return adjustedPad;
+    return adjustPad(props, props.theme.global.input.padding);
   }
 
   let orientation;
@@ -390,22 +385,21 @@ export const getInputPadBySide = (props, side) => {
   return adjustedPad;
 };
 
-const placeholderColor = css`
-  color: ${props =>
-    normalizeColor(props.theme.global.colors.placeholder, props.theme)};
+const placeholderColor = props => css`
+  color: ${normalizeColor(props.theme.global.colors.placeholder, props.theme)};
 `;
 
-const placeholderStyle = css`
+const placeholderStyle = props => css`
   &::-webkit-input-placeholder {
-    ${placeholderColor};
+    ${placeholderColor(props)};
   }
 
   &::-moz-placeholder {
-    ${placeholderColor};
+    ${placeholderColor(props)};
   }
 
   &:-ms-input-placeholder {
-    ${placeholderColor};
+    ${placeholderColor(props)};
   }
 `;
 
@@ -417,25 +411,23 @@ const inputSizeStyle = props => {
   `;
 };
 
-export const inputStyle = css`
+export const inputStyle = props => css`
   box-sizing: border-box;
-  ${props =>
-    `font-size: ${
-      props.theme.global.input.font.size
-        ? props.theme.text[props.theme.global.input.font.size].size ||
-          props.theme.global.input.font.size
-        : 'inherit'
-    };`}
+  ${`font-size: ${
+    props.theme.global.input.font.size
+      ? props.theme.text[props.theme.global.input.font.size].size ||
+        props.theme.global.input.font.size
+      : 'inherit'
+  };`}
   font-family: inherit;
   border: none;
   -webkit-appearance: none;
   background: transparent;
   color: inherit;
   width: 100%;
-  ${props =>
-    props.theme.global.input.font.height &&
+  ${props.theme.global.input.font.height &&
     `line-height: ${props.theme.global.input.font.height};`}
-  ${props =>
+  ${
     props.theme.global.input.padding &&
     typeof props.theme.global.input.padding !== 'object'
       ? // On a breaking change release, this condition could be removed and
@@ -452,18 +444,20 @@ export const inputStyle = css`
           props.responsive,
           props.theme.box.responsiveBreakpoint,
           props.theme,
-        )}
-  ${props =>
+        )
+  }
+  ${
     // for backwards compatibility, check if props.theme.global.input.weight
     (props.theme.global.input.weight || props.theme.global.input.font.weight) &&
-    css`
-      font-weight: ${props.theme.global.input.weight ||
-        props.theme.global.input.font.weight};
-    `} margin: 0;
-  ${props => props.size && inputSizeStyle(props)}
-  ${props => props.focus && !props.plain && focusStyle()};
-  ${controlBorderStyle}
-  ${placeholderStyle}
+      css`
+        font-weight: ${props.theme.global.input.weight ||
+          props.theme.global.input.font.weight};
+      `
+  } margin: 0;
+  ${props.size && inputSizeStyle(props)}
+  ${props.focus && !props.plain && focusStyle()};
+  ${controlBorderStyle(props)}
+  ${placeholderStyle(props)}
 
   ::-webkit-search-decoration {
     -webkit-appearance: none;
@@ -501,12 +495,10 @@ const ALIGN_SELF_MAP = {
   stretch: 'stretch',
 };
 
-export const genericStyles = css`
-  ${props =>
-    props.alignSelf && `align-self: ${ALIGN_SELF_MAP[props.alignSelf]};`}
-  ${props => props.gridArea && `grid-area: ${props.gridArea};`}
-  ${props =>
-    props.margin &&
+export const genericStyles = props => css`
+  ${props.alignSelf && `align-self: ${ALIGN_SELF_MAP[props.alignSelf]};`}
+  ${props.gridArea && `grid-area: ${props.gridArea};`}
+  ${props.margin &&
     props.theme.global &&
     edgeStyle(
       'margin',
@@ -517,9 +509,8 @@ export const genericStyles = css`
     )}
 `;
 
-export const disabledStyle = componentStyle => css`
-  opacity: ${props =>
-    componentStyle || props.theme.global.control.disabled.opacity};
+export const disabledStyle = componentStyle => props => css`
+  opacity: ${componentStyle || props.theme.global.control.disabled.opacity};
   cursor: default;
 `;
 
